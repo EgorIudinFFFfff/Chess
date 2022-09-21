@@ -1,0 +1,55 @@
+using System;
+namespace code
+{
+	class Program
+	{
+		static void Main()
+			{
+				byte[] delts = TakeDelta();
+				byte deltaX = delts[0], deltaY = delts[1];
+
+				Console.WriteLine("Возможные фигуры:");
+				bool haveFigure = false;
+
+				if (deltaX == 1 && deltaY == 1)
+				{
+					Console.WriteLine("Король");
+					haveFigure = true;
+				}
+				if (deltaX == 0 && deltaY != 0 || deltaY == 0 && deltaX != 0)
+				{
+					Console.WriteLine("Ладья");
+					haveFigure = true;
+				}
+				if (deltaX == deltaY || (deltaX != 0 && deltaY == 0 || deltaY != 0 && deltaX == 0))
+				{
+					Console.WriteLine("Ферзь");
+					haveFigure = true;
+				}
+				if(deltaX == 2 && deltaY == 1 || deltaY == 2 && deltaX == 1)
+				{
+					Console.WriteLine("Конь");
+					haveFigure = true;
+				}
+				if (deltaX == deltaY)
+				{	Console.WriteLine("Слон");
+					haveFigure = true;
+				}
+				if (!haveFigure)
+					Console.WriteLine("	 Их нет :( ");
+			}
+
+		static byte[] TakeDelta()
+		{
+			Console.WriteLine("Введите начальные координаты (x1, y1):");
+			byte x1 = Convert.ToByte(Console.Read()), y1 = Convert.ToByte(Console.ReadLine());
+
+			Console.WriteLine("Введите конечные координаты (x2, y2):");
+			byte x2 = Convert.ToByte(Console.Read()), y2 = Convert.ToByte(Console.ReadLine());
+
+			byte deltaX = (byte) Math.Abs(x1 - x2), deltaY = (byte) Math.Abs(y1 - y2);
+			byte[] delts = { deltaX, deltaY };
+			return delts;
+		}
+	}
+}
