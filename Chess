@@ -41,9 +41,10 @@ namespace code
 
 		static byte[] TakeDelta()
 		{
+			//ввод в виде: 5 5
 			Console.WriteLine("Введите начальные координаты (x1, y1):");
 			byte x1 = Convert.ToByte(Console.Read()), y1 = Convert.ToByte(Console.ReadLine());
-
+			
 			Console.WriteLine("Введите конечные координаты (x2, y2):");
 			byte x2 = Convert.ToByte(Console.Read()), y2 = Convert.ToByte(Console.ReadLine());
 
